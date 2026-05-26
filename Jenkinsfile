@@ -1,3 +1,5 @@
+@Library('mylib') _
+
 pipeline {
 
     agent any
@@ -6,19 +8,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo Building App'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'echo Running Tests'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploying'
+                script {
+                    buildApp()
+                }
             }
         }
     }
